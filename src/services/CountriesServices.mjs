@@ -6,6 +6,10 @@ export const getAllService = async () => {
     return await CountriesRepository.getAll()
 }
 
+export const createCountriesService = async (datos) => {
+    return await CountriesRepository.create(datos);
+}
+
 const api = "https://restcountries.com/v3.1/all";
 const api_spanish = "https://restcountries.com/v3.1/lang/spanish";
 

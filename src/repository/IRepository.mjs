@@ -1,5 +1,5 @@
 class IRepository{
-    create(){
+    create(data){
         throw new Error("Método 'create()' no implementado");
     }
 
