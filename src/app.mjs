@@ -20,6 +20,10 @@ const PORT = process.env.PORT || 3000;
 //MIDDLEWARE
 app.use(express.json());
 
+
+//Para archivos estáticos
+app.use(express.static('public'));
+
 app.use('/api', countriesRouter);
 
 
