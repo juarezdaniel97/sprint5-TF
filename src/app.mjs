@@ -6,7 +6,8 @@ import countriesRouter from "./routes/CountriesRoutes.mjs";
 
 
 //Cargar las variables de entorno.
-config();
+//config();
+config({path:'../.env'})
 
 //console.log(process.env.NOMBRE); // salida: daniel juarez
 

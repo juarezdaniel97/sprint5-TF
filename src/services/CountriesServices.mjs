@@ -18,15 +18,10 @@ export const deleteCountryService = async (id) =>{
     return await CountriesRepository.deleteById(id);
 } 
 
-const api = "https://restcountries.com/v3.1/all";
-const api_spanish = "https://restcountries.com/v3.1/lang/spanish";
 
-
-export const fetchAllCountries = async () => {
-    console.log('Iniciando la solicitud a  la API');
-    
+export const fetchAllCountries = async () => {    
     try {
-        const response = await fetch(api_spanish);
+        const response = await fetch(process.env.URL_API_SPANISH);
         if (!response.ok) {
             throw new Error(`Error en la solicitud: ${response.status}`);
         }
@@ -40,15 +35,10 @@ export const fetchAllCountries = async () => {
 };
 
 
-
-
 /*
-const api = "https://restcountries.com/v3.1/all";
-const api_spanish = "https://restcountries.com/v3.1/lang/spanish";
-
 export const fetchAllCountries = async () => {
     try {
-        const response = await axios.get(api, {
+        const response = await axios.get(process.env.URL_API_ALL, {
             timeout: 50000, // Tiempo de espera en milisegundos
             maxContentLength: Infinity,
             maxBodyLength: Infinity,
