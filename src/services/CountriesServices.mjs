@@ -10,6 +10,14 @@ export const createCountriesService = async (datos) => {
     return await CountriesRepository.create(datos);
 }
 
+export const updateCountryService = async (id, datos) => {
+    return await CountriesRepository.update(id, datos);
+}
+
+export const deleteCountryService = async (id) =>{
+    return await CountriesRepository.deleteById(id);
+} 
+
 const api = "https://restcountries.com/v3.1/all";
 const api_spanish = "https://restcountries.com/v3.1/lang/spanish";
 

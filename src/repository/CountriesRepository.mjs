@@ -20,6 +20,20 @@ class CountriesRepository extends IRepository{
             throw new Error("Error al agregar un Pais: ");
         }
     }
+
+    async update(id, datos){
+        const documentUpdate = await Countries.findByIdAndUpdate(id, datos, { new: true });
+
+        if (!documentUpdate) {
+            throw new Error("País no encontrado!");
+        }
+
+        return documentUpdate
+    }
+
+    async deleteById(id){
+        return await Countries.findByIdAndDelete(id);
+    }
 }
 
 export default new CountriesRepository();
