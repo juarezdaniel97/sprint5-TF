@@ -56,7 +56,8 @@ const countriesSchema = new mongoose.Schema({
     capitalInfo: {
         latlng: [{ type: Number }]
     },
-    creador: { type: String, default: "Daniel Juarez" }
+    creador: { type: String, default: "Daniel Juarez" },
+    type: { type: String, default: "Country" }
 
 }, { collection: 'Grupo-13' });
 
