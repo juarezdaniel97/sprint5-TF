@@ -113,24 +113,33 @@
         <h3 class="text-2xl font-semibold mb-4">Estadísticas</h3>
         <% if (countries.length > 0) { %>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
+                <% 
+                    let poblacionTotal = 0; 
+                    let areaTotal = 0; 
+                    countries.forEach(element => {
+                        poblacionTotal += element.population
+                        areaTotal += element.area
+                    });
+                    
+                    let indiceGini = poblacionTotal/areaTotal;
+                %>
                 <div class="p-6 bg-white shadow-lg rounded-lg">
-                    <h4 class="text-lg font-semibold">PAÍS CON MAYOR POBLACIÓN</h4>
-                    <p class="mt-2 text-blue-800">México - 22,000.000</p>
+                    <h4 class="text-lg font-semibold">PAÍS CON MENOR Y MAYOR POBLACIÓN</h4>
+                    <p class="mt-2 text-blue-800">Belize - 1.000.000  México - 22,000.000</p>
                 </div>
     
                 <div class="p-6 bg-white shadow-md rounded-lg">
                     <h4 class="text-lg font-semibold">POBLACIÓN TOTAL</h4>
-                    <p class="mt-2 text-blue-800 text">150,000,000</p>
+                    <p class="mt-2 text-blue-800 text"><%= poblacionTotal %></p>
                 </div>
     
                 <div class="p-6 bg-white shadow-lg rounded-lg">
                     <h4 class="text-lg font-semibold">ÁREA TOTAL</h4>
-                    <p class="mt-2 text-blue-800">153,156,4654 km²</p>
+                    <p class="mt-2 text-blue-800"> <%= areaTotal %> km²</p>
                 </div>
                 <div class="p-6 bg-white shadow-lg rounded-lg">
                     <h4 class="text-lg font-semibold">GINI PROMEDIO TOTAL</h4>
-                    <p class="mt-2 text-blue-800 text">50%</p>
+                    <p class="mt-2 text-blue-800 text"> <%= indiceGini.toFixed(2) %> </p>
                 </div>
             </div>
             <% } else { %>

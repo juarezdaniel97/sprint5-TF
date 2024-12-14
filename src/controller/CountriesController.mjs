@@ -39,7 +39,8 @@ export const getAllController = async (req, res) => {
         const datos = await getAllService();
 
         //res.send({ count: datos.length ,data: datos });
-        res.render('dashboard', {countries: datos, title: "Gestión de Paises"});
+        const statistics = 0;
+        res.render('dashboard', {title: "Gestión de Paises", countries: datos, statistics: statistics});
 
     } catch (error) {
         res.status(500).send('Error al obtener todos los datos')
