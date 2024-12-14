@@ -3,8 +3,7 @@ import {
     getAllService,
     createCountriesService,
     updateCountryService,
-    deleteCountryService,
-    mostrarPaises
+    deleteCountryService
 
 } from '../services/CountriesServices.mjs';
 
@@ -15,16 +14,16 @@ import { filterCountriesAPI } from '../public/js/filterAPI.mjs';
 
 export const proccessAndSaveCountries = async (req, res) => {
     try {
-        //const countries = await fetchAllCountries();
-        const countries = await mostrarPaises();
-        //const countries_filter =  filterCountriesAPI(countries);
+        const countries = await fetchAllCountries();
+        const countries_filter =  filterCountriesAPI(countries);
 
         //GUARDAR DATOS -> Llamar al método que crea Paises
         //await createCountriesService(countries_filter[0]);
 
         res.status(200).json({
             message: "Paises procesados y almacenados exitosamente",
-            count: countries.length,
+            count_total: countries.length,
+            count_filter: countries_filter.length,
         });
 
     } catch (error) {
