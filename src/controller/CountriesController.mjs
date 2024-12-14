@@ -11,6 +11,7 @@ import {
 
 import { filterCountriesAPI } from '../public/js/filterAPI.mjs';
 
+import { calculosCounties } from '../public/js/calculosEstadisticos.mjs'
 
 
 
@@ -36,12 +37,16 @@ export const proccessAndSaveCountries = async (req, res) => {
 
 export const getAllController = async (req, res) => {
     try {
-        const datos = await getAllService();
+        //const datos = await getAllService();
+        const countries = await getAllService();
 
         //res.send({ count: datos.length ,data: datos });
-        const statistics = 0;
-        res.render('dashboard', {title: "Gestión de Paises", countries: datos, statistics: statistics});
+        //const statistics = calculosCounties(datos);
+        const statistics = calculosCounties(countries);
 
+        //res.render('dashboard', {title: "Gestión de Paises", countries: datos, statistics: statistics});
+        res.render('dashboard', {title: "Gestión de Paises", countries, statistics});
+        
     } catch (error) {
         res.status(500).send('Error al obtener todos los datos')
     }

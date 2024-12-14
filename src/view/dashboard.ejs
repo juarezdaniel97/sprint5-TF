@@ -38,10 +38,8 @@
                                 area: `${element.area} km²`,
                                 poblacion: element.population,
                                 fronteras: element.borders || [],
-                                indiceGini: element.gini ? Object.values(element.gini)[0] : 'N/A',
-                                zonaHoraria: element.timezones[0],
-                                creador: element.creador
-                            }) %>'>
+                                indiceGini: element.gini ? Object.values(element.gini)[0] : ' N/A', zonaHoraria:
+                                element.timezones[0], creador: element.creador }) %>'>
 
                                 <td class="border px-4 py-2">
                                     <%= element.name.official %>
@@ -64,9 +62,20 @@
                                     </div>
                                 </td>
                             </tr>
+
                             <% }) %>
-                                <!--                         
-                        <tr class="country-row cursor-pointer hover:bg-gray-100"
+                                <!-- MUESTRA LA ÚLTIMA FILA
+                                    <tr>
+                                        <td colspan="2" class="border px-4 py-2">
+                                            DATOS DE POBLACIÓN
+                                        </td>
+                                        <td colspan="2" class="border px-4 py-2">
+                                            DATOS ÁREA
+                                        </td>
+                                    </tr> 
+                                -->
+                                <!--  EJEMPLO DE FILAS RENDERIZADAS                       
+                                    <tr class="country-row cursor-pointer hover:bg-gray-100"
                             data-details='{"nombre": "Argentina", "capital": "Buenos Aires", "area": "2,780,400 km²", "poblacion": "45,380,000", "fronteras": ["Chile", "Brasil", "Uruguay"], "indiceGini": 42.9, "zonaHoraria": "UTC-3", "creador": "Admin"}'>
                             <td class="border px-4 py-2">Argentina</td>
                             <td class="border px-4 py-2">Buenos Aires</td>
@@ -80,7 +89,8 @@
                                         class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 delete-button">Eliminar</button>
                                 </div>
                             </td>
-                        </tr> -->
+                                    </tr> 
+                                -->
                                 <% } else { %>
                                     <tr class="border px-4 py-2">
                                         <td colspan="5" class=" font-semibold px-4 py-4 whitespace-nowrap text-center">
@@ -111,43 +121,42 @@
     <!-- Estadísticas -->
     <section id="estadisticas" class="mt-12">
         <h3 class="text-2xl font-semibold mb-4">Estadísticas</h3>
-        <% if (countries.length > 0) { %>
+
+        <% if (statistics && Object.keys(statistics).length > 0) { %>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <% 
-                    let poblacionTotal = 0; 
-                    let areaTotal = 0; 
-                    countries.forEach(element => {
-                        poblacionTotal += element.population
-                        areaTotal += element.area
-                    });
-                    
-                    let indiceGini = poblacionTotal/areaTotal;
-                %>
-                <div class="p-6 bg-white shadow-lg rounded-lg">
-                    <h4 class="text-lg font-semibold">PAÍS CON MENOR Y MAYOR POBLACIÓN</h4>
-                    <p class="mt-2 text-blue-800">Belize - 1.000.000  México - 22,000.000</p>
-                </div>
-    
-                <div class="p-6 bg-white shadow-md rounded-lg">
-                    <h4 class="text-lg font-semibold">POBLACIÓN TOTAL</h4>
-                    <p class="mt-2 text-blue-800 text"><%= poblacionTotal %></p>
-                </div>
-    
-                <div class="p-6 bg-white shadow-lg rounded-lg">
-                    <h4 class="text-lg font-semibold">ÁREA TOTAL</h4>
-                    <p class="mt-2 text-blue-800"> <%= areaTotal %> km²</p>
-                </div>
-                <div class="p-6 bg-white shadow-lg rounded-lg">
-                    <h4 class="text-lg font-semibold">GINI PROMEDIO TOTAL</h4>
-                    <p class="mt-2 text-blue-800 text"> <%= indiceGini.toFixed(2) %> </p>
-                </div>
+
+                    <div class="p-6 bg-white shadow-lg rounded-lg text-center">
+                        <h4 class="text-lg font-semibold">PAÍS CON MENOR Y MAYOR POBLACIÓN</h4>
+                        <p class="mt-2 text-blue-800 text-center text-xl"> 
+                            <%= statistics.paisMenorPoblacion.name.common %> - <%= statistics.paisMenorPoblacion.population %> / <%= statistics.paisMayorPoblacion.name.common %> - <%= statistics.paisMayorPoblacion.population %> 
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-white shadow-md rounded-lg text-center">
+                        <h4 class="text-lg font-semibold">POBLACIÓN TOTAL</h4>
+                        <p class="mt-2 text-blue-800 text-center text-xl">
+                            <%= statistics.poblacionTotal %>
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-white shadow-lg rounded-lg text-center">
+                        <h4 class="text-lg font-semibold">ÁREA TOTAL</h4>
+                        <p class="mt-2 text-blue-800 text-center text-xl">
+                            <%= statistics.areaTotal %> km²
+                        </p>
+                    </div>
+                    <div class="p-6 bg-white shadow-lg rounded-lg text-center">
+                        <h4 class="text-lg font-semibold">GINI PROMEDIO TOTAL</h4>
+                        <p class="mt-2 text-blue-800 text-center text-xl">
+                            <%= statistics.indiceIni.toFixed(2) %>
+                        </p>
+                    </div>
             </div>
             <% } else { %>
                 <div class="p-6 bg-white shadow-lg rounded-lg">
                     <h5 class="text-lg text-center font-semibold">¡LO SIENTO, NO HAY ESTADÍSTICAS DISPONIBLES!</h5>
                 </div>
-            <% } %>
-
-
+                <% } %>
+        
     </section>
 </main>
