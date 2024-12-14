@@ -18,7 +18,6 @@ import {
 
 } from '../validators/CountryValidator.mjs'
 
-
 const router = express.Router();
 
 router.get('/process-countries', proccessAndSaveCountries);

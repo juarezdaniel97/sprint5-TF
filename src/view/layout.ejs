@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Países</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-gradient-to-r from-green-200 via-yellow-200 to-pink-200 text-gray-800">
+    
+    <!-- Navbar -->
+    <%- include('partials/navbar') %>
+
+    <!-- Section -->
+    <%- include('partials/header') %>
+
+    <!-- Main Content -->
+    <main class="container mx-auto mt-8 px-6">
+        <%- body %>
+    </main>
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+    
+
+    <script src="/js/menu.js"></script>
+    <script src="/js/filterName.js"></script>
+    <script src="/js/modal.js"></script>
+    <script src="/js/edit.js"></script>
+    <script src="/js/delete.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+
+<!-- Main Content -->
+<main class="container mx-auto mt-8 px-6">
+    <section id="listado-paises">
+        <div class="grid grid-cols-2 gap-4">
+
+            <!-- Listado de Países -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-4">Listado de Países</h3>
+            </div>
+
+            <!-- Campo de búsqueda -->
+            <div>
+                <div class="text-right">
+                    <label for="filtro" class="text-sm font-medium text-gray-700">Buscar</label>
+                    <input type="text" id="filtro" placeholder="ingrese nombre del pais"
+                        class="text-sm  mb-4 p-1 border rounded" onkeyup="filtrarTabla()">
+                </div>
+            </div>
+        </div>
+
+        <div class="container table-container overflow-x-auto">
+            <table class="table-auto w-full bg-white border border-gray-300 text-sm">
+                <thead>
+                    <tr class="bg-gray-500 text-white">
+                        <th class="border border-gray-300 px-4 py-2">Nombre</th>
+                        <th class="border border-gray-300 px-4 py-2">Capital</th>
+                        <th class="border border-gray-300 px-4 py-2">Área</th>
+                        <th class="border border-gray-300 px-4 py-2">Población</th>
+                        <th class="border border-gray-300 px-4 py-2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-paises">
+                    <!-- Argentina -->
+                    <tr class="country-row cursor-pointer hover:bg-gray-100"
+                        data-details='{"nombre": "Argentina", "capital": "Buenos Aires", "area": "2,780,400 km²", "poblacion": "45,380,000", "fronteras": ["Chile", "Brasil", "Uruguay"], "indiceGini": 42.9, "zonaHoraria": "UTC-3", "creador": "Admin"}'>
+                        <td class="border px-4 py-2">Argentina</td>
+                        <td class="border px-4 py-2">Buenos Aires</td>
+                        <td class="border px-4 py-2">2,780,400 km²</td>
+                        <td class="border px-4 py-2">45,380,000</td>
+                        <td class="border py-2 text-center">
+                            <div class="flex justify-center items-center space-x-2">
+                                <button
+                                    class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 edit-button">Editar</button>
+                                <button
+                                    class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 delete-button">Eliminar</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Brasil -->
+                    <tr class="country-row cursor-pointer hover:bg-gray-100"
+                        data-details='{"nombre": "Brasil", "capital": "Brasilia", "area": "8,515,767 km²", "poblacion": "214,000,000", "fronteras": ["Argentina", "Uruguay", "Perú"], "indiceGini": 48.9, "zonaHoraria": "UTC-3", "creador": "Admin"}'>
+                        <td class="border px-4 py-2">Brasil</td>
+                        <td class="border px-4 py-2">Brasilia</td>
+                        <td class="border px-4 py-2">8,515,767 km²</td>
+                        <td class="border px-4 py-2">214,000,000</td>
+                        <td class="border px-4 py-2 text-center">
+                            <div class="flex justify-center items-center space-x-2">
+                                <button
+                                    class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 edit-button">Editar</button>
+                                <button
+                                    class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 delete-button">Eliminar</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Chile -->
+                    <tr class="country-row cursor-pointer hover:bg-gray-100"
+                        data-details='{"nombre": "Chile", "capital": "Santiago", "area": "756,102 km²", "poblacion": "19,490,000", "fronteras": ["Argentina", "Bolivia", "Perú"], "indiceGini": 44.4, "zonaHoraria": "UTC-4", "creador": "Admin"}'>
+                        <td class="border px-4 py-2">Chile</td>
+                        <td class="border px-4 py-2">Santiago</td>
+                        <td class="border px-4 py-2">756,102 km²</td>
+                        <td class="border px-4 py-2">19,490,000</td>
+                        <td class="border px-4 py-2 text-center">
+                            <div class="flex justify-center items-center space-x-2">
+                                <button
+                                    class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 edit-button">Editar</button>
+                                <button
+                                    class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 delete-button">Eliminar</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Uruguay -->
+                    <tr class="country-row cursor-pointer hover:bg-gray-100"
+                        data-details='{"nombre": "Uruguay", "capital": "Montevideo", "area": "176,215 km²", "poblacion": "3,485,000", "fronteras": ["Brasil", "Argentina"], "indiceGini": 39.5, "zonaHoraria": "UTC-3", "creador": "Admin"}'>
+                        <td class="border px-4 py-2">Uruguay</td>
+                        <td class="border px-4 py-2">Montevideo</td>
+                        <td class="border px-4 py-2">176,215 km²</td>
+                        <td class="border px-4 py-2">3,485,000</td>
+                        <td class="border px-4 py-2 text-center">
+                            <div class="flex justify-center items-center space-x-2">
+                                <button
+                                    class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 edit-button">Editar</button>
+                                <button
+                                    class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 delete-button">Eliminar</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal -->
+        <div id="country-modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-1/3">
+                <h2 class="text-xl font-bold mb-4">Detalles del País</h2>
+                <div id="country-details" class="text-sm">
+                    <!-- Content dinamic -->
+                </div>
+                <div class="text-right">
+                    <button id="close-modal"
+                        class="mt-4 px-4 py-2 bg-red-500 text-white  rounded hover:bg-red-600">Cerrar</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Estadísticas -->
+    <section id="estadisticas" class="mt-12">
+        <h3 class="text-2xl font-semibold mb-4">Estadísticas</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h4 class="text-lg font-semibold">País con mayor población</h4>
+                <p class="mt-2 text-blue-800">México</p>
+            </div>
+
+            <div class="p-6 bg-white shadow-md rounded-lg">
+                <h4 class="text-lg font-semibold">Promedio de población</h4>
+                <p class="mt-2 text-blue-800 text">22,000,000</p>
+            </div>
+
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h4 class="text-lg font-semibold">País con mayor GINI</h4>
+                <p class="mt-2 text-blue-800">Argentina</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h4 class="text-lg font-semibold">Promedio de Gini</h4>
+                <p class="mt-2 text-blue-800 text">50%</p>
+            </div>
+        </div>
+
+
+    </section>
+</main>
