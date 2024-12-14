@@ -19,8 +19,8 @@ class IRepository{
         throw new Error("Método 'getAll()' no implementado");
     }
 
-    getCountries(id){
-        throw new Error("Método 'getCountries()' no implementado");
+    saveCountries_of_API(countries){
+        throw new Error("Método 'saveCountries_of_API(countries)' no implementado");
     }
 
 }

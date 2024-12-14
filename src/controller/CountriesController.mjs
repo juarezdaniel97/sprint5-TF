@@ -3,7 +3,8 @@ import {
     getAllService,
     createCountriesService,
     updateCountryService,
-    deleteCountryService
+    deleteCountryService,
+    saveCountries_API_BD_service
 
 } from '../services/CountriesServices.mjs';
 
@@ -17,8 +18,8 @@ export const proccessAndSaveCountries = async (req, res) => {
         const countries = await fetchAllCountries();
         const countries_filter =  filterCountriesAPI(countries);
 
-        //GUARDAR DATOS -> Llamar al método que crea Paises
-        //await createCountriesService(countries_filter[0]);
+        //Guardar en la BD
+        await saveCountries_API_BD_service(countries_filter);
 
         res.status(200).json({
             message: "Paises procesados y almacenados exitosamente",

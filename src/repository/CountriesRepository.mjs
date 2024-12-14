@@ -3,27 +3,38 @@ import IRepository from "./IRepository.mjs";
 import Countries from "../models/Countries.mjs";
 
 
-class CountriesRepository extends IRepository{
+class CountriesRepository extends IRepository {
 
-    async getAll(){
+    async getAll() {
         //Puedo filtrar por el campo name, common, etc
         //Me parece más práctico añadirle un campo de type y filtrar por tipo (Country o SuperHero)
-        return await Countries.find({type: "Country"});
+        return await Countries.find({ type: "Country" });
     }
 
-    async create(datos){
+    async saveCountries_of_API(countries) {
+        try {
+                Countries.create(countries);
+                console.log('PAISES GUARDADOS EN BD..');
+
+        } catch (error) {
+            console.error('ERROR AL GUARDAR PAISES EN LA BASE DE DATOS:', error);
+            throw error;
+        }
+    }
+
+    async create(datos) {
         try {
             const countries = new Countries(datos);
             return await countries.save();
 
         } catch (error) {
             console.log(error);
-            
+
             throw new Error("Error al agregar un Pais: ");
         }
     }
 
-    async update(id, datos){
+    async update(id, datos) {
         const documentUpdate = await Countries.findByIdAndUpdate(id, datos, { new: true });
 
         if (!documentUpdate) {
@@ -33,7 +44,7 @@ class CountriesRepository extends IRepository{
         return documentUpdate
     }
 
-    async deleteById(id){
+    async deleteById(id) {
         return await Countries.findByIdAndDelete(id);
     }
 }
