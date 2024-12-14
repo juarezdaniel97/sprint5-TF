@@ -40,5 +40,9 @@ export const deleteCountryService = async (id) => {
     return await CountriesRepository.deleteById(id);
 }
 
+export const deleteAllCountriesService = async () =>{
+    return await CountriesRepository.deleteAll();
+}
+
 
 

@@ -4,7 +4,8 @@ import {
     getAllController,
     addCountryController,
     updateCountryController,
-    deleteCountryController
+    deleteCountryController,
+    deleteAllCountriesController
 } from '../controller/CountriesController.mjs';
 
 import { validationErrorHandler } from '../middleware/errorHandler.mjs';
@@ -41,5 +42,6 @@ router.put('/country/:id',
         validateGiniCountry
     ],validationErrorHandler,updateCountryController);
 router.delete('/country/:id', deleteCountryController);
+router.delete('/countries', deleteAllCountriesController);
 
 export default router;

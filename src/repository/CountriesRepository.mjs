@@ -47,6 +47,10 @@ class CountriesRepository extends IRepository {
     async deleteById(id) {
         return await Countries.findByIdAndDelete(id);
     }
+
+    async deleteAll(){
+        return await Countries.deleteMany({type: "Country"})
+    }
 }
 
 export default new CountriesRepository();

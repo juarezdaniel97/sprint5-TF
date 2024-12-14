@@ -15,7 +15,7 @@ class IRepository{
         throw new Error("Método 'getFindById()' no implementado");
     }
 
-    getAll(id){
+    getAll(){
         throw new Error("Método 'getAll()' no implementado");
     }
 
@@ -23,6 +23,9 @@ class IRepository{
         throw new Error("Método 'saveCountries_of_API(countries)' no implementado");
     }
 
+    deleteAll(){
+        throw new Error("Método 'deleteAll()' no implementado");
+    }
 }
 
 export default IRepository

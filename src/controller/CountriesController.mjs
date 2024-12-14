@@ -4,7 +4,8 @@ import {
     createCountriesService,
     updateCountryService,
     deleteCountryService,
-    saveCountries_API_BD_service
+    saveCountries_API_BD_service,
+    deleteAllCountriesService
 
 } from '../services/CountriesServices.mjs';
 
@@ -83,3 +84,17 @@ export const deleteCountryController = async (req, res) => {
         res.status(400).json({ message: 'Error al eliminar el país.', error: error.message });
     }
 } 
+
+export const deleteAllCountriesController = async (req, res) => {
+    try {
+        const countries = await deleteAllCountriesService();
+        console.log(countries);
+
+        if (countries) {
+            res.send('Paises eliminados correctamente!');
+        }
+
+    } catch (error) {
+        res.status(400).json({ message: 'Error al eliminar todos los paises.', error: error.message })
+    }
+}

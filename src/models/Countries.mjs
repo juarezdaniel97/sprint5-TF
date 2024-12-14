@@ -41,8 +41,11 @@ const countriesSchema = new mongoose.Schema({
         openStreetMaps: { type: String }
     },
     population: { type: Number },
-    gini: {
+    /*gini: {
         "2019": { type: Number }
+    },*/
+    gini: {
+        [String]: { type: Number }
     },
     fifa: { type: String },
     timezones: [{ type: String }],
