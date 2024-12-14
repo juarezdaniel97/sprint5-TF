@@ -44,8 +44,11 @@ const countriesSchema = new mongoose.Schema({
     /*gini: {
         "2019": { type: Number }
     },*/
-    gini: {
+    /*gini: {
         [String]: { type: Number }
+    },*/
+    gini: {
+        type: Map, of: Number
     },
     fifa: { type: String },
     timezones: [{ type: String }],
