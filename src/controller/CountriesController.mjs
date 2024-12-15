@@ -38,14 +38,20 @@ export const proccessAndSaveCountries = async (req, res) => {
 export const getAllController = async (req, res) => {
     try {
         //const datos = await getAllService();
-        const countries = await getAllService();
+        const data = await getAllService();
 
         //res.send({ count: datos.length ,data: datos });
         //const statistics = calculosCounties(datos);
-        const statistics = calculosCounties(countries);
+        const statistics = calculosCounties(data);
+
+        const countries = data.map(country => ({
+            ...country.toObject(),
+            gini: country.gini ? Object.fromEntries(country.gini) : null
+        }));
 
         //res.render('dashboard', {title: "Gestión de Paises", countries: datos, statistics: statistics});
         res.render('dashboard', {title: "Gestión de Paises", countries, statistics});
+        //res.render('dashboard', {title: "Gestión de Paises", processedCountries, statistics});
         
     } catch (error) {
         res.status(500).send('Error al obtener todos los datos')

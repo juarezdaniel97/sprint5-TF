@@ -30,6 +30,7 @@
                     </tr>
                 </thead>
                 <tbody id="tabla-paises">
+                    <!-- Origin: variable -> countries / processedCountries-->
                     <% if (countries.length> 0) { %>
                         <% countries.forEach(element=> { %>
                             <tr class="country-row cursor-pointer hover:bg-gray-100" data-details='<%= JSON.stringify({
@@ -38,8 +39,9 @@
                                 area: `${element.area} km²`,
                                 poblacion: element.population,
                                 fronteras: element.borders || [],
-                                indiceGini: element.gini ? Object.values(element.gini)[0] : ' N/A', zonaHoraria:
-                                element.timezones[0], creador: element.creador }) %>'>
+                                indiceGini: element.gini ? Object.entries(element.gini).map(([year, value]) => ({ year, value })) : [], 
+                                zonaHoraria: element.timezones[0], 
+                                creador: element.creador }) %>'>
 
                                 <td class="border px-4 py-2">
                                     <%= element.name.official %>
@@ -50,8 +52,11 @@
                                 <td class="border px-4 py-2">
                                     <%= element.area %> km²
                                 </td>
-                                <td class="border px-4 py-2">
+                                
+                                <td class="border px-4 py-2"> 
+                                    <!-- Se muestra población  (origin)-->
                                     <%= element.population %>
+                                </td>
                                 </td>
                                 <td class="border py-2 text-center">
                                     <div class="flex justify-center items-center space-x-2">

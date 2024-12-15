@@ -11,18 +11,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const countryDetails = JSON.parse(row.dataset.details);
+
             showDetails(countryDetails);
         });
     });
 
     function showDetails(country) {
+
+        let giniContent = 'No disponible';
+        if (country.indiceGini && country.indiceGini.length > 0) {
+            giniContent = '<ul>';
+            country.indiceGini.forEach(gini => {
+                giniContent += `<li>Año: ${gini.year} - Valor: ${gini.value}</li>`;
+            });
+            giniContent += '</ul>';
+        }
+
         modalContent.innerHTML = `
             <p><strong>Nombre:</strong> ${country.nombre}</p>
             <p><strong>Capital:</strong> ${country.capital}</p>
             <p><strong>Área:</strong> ${country.area}</p>
             <p><strong>Población:</strong> ${country.poblacion}</p>
-            <p><strong>Fronteras:</strong> ${country.fronteras.join(', ')}</p>
-            <p><strong>Índice Gini:</strong> ${country.indiceGini}</p>
+            <p><strong>Fronteras:</strong> ${country.fronteras.join(', ') || 'No tiene'}</p>
+            <p><strong>Índice Gini:</strong> ${giniContent}</p>
             <p><strong>Zona Horaria:</strong> ${country.zonaHoraria}</p>
             <p><strong>Creador:</strong> ${country.creador}</p>
         `;
