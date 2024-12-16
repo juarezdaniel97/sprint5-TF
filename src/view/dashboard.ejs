@@ -127,7 +127,7 @@
     <section id="estadisticas" class="mt-12">
         <h3 class="text-2xl font-semibold mb-4">Estadísticas</h3>
 
-        <% if (statistics && Object.keys(statistics).length > 0) { %>
+        <% if (statistics && statistics.paisMenorPoblacion && statistics.paisMayorPoblacion) { %>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <div class="p-6 bg-white shadow-lg rounded-lg text-center">
@@ -150,6 +150,7 @@
                             <%= statistics.areaTotal %> km²
                         </p>
                     </div>
+
                     <div class="p-6 bg-white shadow-lg rounded-lg text-center">
                         <h4 class="text-lg font-semibold">GINI PROMEDIO TOTAL</h4>
                         <p class="mt-2 text-blue-800 text-center text-xl">
@@ -159,7 +160,7 @@
             </div>
             <% } else { %>
                 <div class="p-6 bg-white shadow-lg rounded-lg">
-                    <h5 class="text-lg text-center font-semibold">¡LO SIENTO, NO HAY ESTADÍSTICAS DISPONIBLES!</h5>
+                    <h5 class="text-md text-center font-semibold">¡NO HAY ESTADÍSTICAS DISPONIBLES!</h5>
                 </div>
                 <% } %>
         

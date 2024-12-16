@@ -2,6 +2,7 @@
 
 export const calculosCounties = (countries) => {
 
+    
     //Calculamos la población total acumulando todas las poblaciones de los paises
     const poblacionTotal = countries.reduce((acc, country) => acc + country.population, 0);
 
