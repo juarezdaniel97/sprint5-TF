@@ -19,11 +19,11 @@ export const validateBordersCountry = body('borders')
         for(const border of borders){
             
             if (border.trim().length !== 3) {
-                throw new Error('¡CADA LÍMITE DEBE TENER 3 CARACTERES!');
+                throw new Error('¡CADA FRONTERA DEBE TENER 3 CARACTERES!');
             }
             
             if (border.trim() !== border.trim().toUpperCase()) {
-                throw new Error('¡CADA LÍMITE DEBE TENER TODOS SUS CARACTERES EN MAYÚSCULAS!');
+                throw new Error('¡CADA FRONTERA DEBE TENER TODOS SUS CARACTERES EN MAYÚSCULAS!');
             }
         }
         return true;
