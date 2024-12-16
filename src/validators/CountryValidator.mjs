@@ -6,10 +6,12 @@ export const validateNameCountry = body('name.official')
     .trim()
     .isLength({min:3, max:90}).withMessage('¡EL NOMBRE OFICIAL DEL PAÍS DEBE TENER ENTRE 3 Y 90 CARACTERES!')
 
+
 // VALIDATION FOR THE CAPITAL FIELD
 export const validateCapitalCountry = body('capital')
     .trim()
     .isLength({min:3, max:90}).withMessage('¡LA CAPITAL DEL PAÍS DEBE TENER ENTRE 3  Y 90 CARACTERES!')
+
 
 //VALIDATION FOR THE BORDERS FIELD
 export const validateBordersCountry = body('borders')
@@ -30,15 +32,29 @@ export const validateBordersCountry = body('borders')
 
 //VALIDATION FOR THE AREA FIELD
 export const validateAreaCountry = body('area')
-    .isNumeric().withMessage('¡EL VALOR INGRESADO DEBE SER NUMÉRICO!')
+    .isNumeric().withMessage('¡EL VALOR INGRESADO DEBE SER DE TIPO NUMÉRICO!')
     .isFloat({min: 0}).withMessage('¡EL VALOR INGRESADO EN EL ÁREA NO PUEDE SER NEGATIVO, POR FAVOR INGRESA UN VALOR MAYOR A 0!')
 
-//VALIDATION FOR THE POPULATION FIELD
+
+    //VALIDATION FOR THE POPULATION FIELD
 export const validatePopulationCountry = body('population')
-    .isNumeric().withMessage('¡EL VALOR INGRESADO DEBE SER NUMÉRICO!')
+    .isNumeric().withMessage('¡EL VALOR INGRESADO DEBE SER DE TIPO NUMÉRICO!')
     .isInt({min: 0}).withMessage('¡EL VALOR INGRESADO EN POBLACIÓN NO PUEDE SER NEGATIVO, POR FAVOR INGRESA UN VALOR MAYOR A 0!')
 
+
 //VALIDATION FOR THE GINI FIELD
-export const validateGiniCountry = body('gini.2019')
-    .isNumeric().withMessage('¡EL VALOR INGRESADO DEBE SER NUMÉRICO!')
-    .isFloat({min:0, max:100}).withMessage('¡!EL VALOR INGRESADO EN GINI DEBE ESTAR COMPRENDIDO ENTRE LOS VALORES 0 Y 100');
+export const validateGiniCountry = body('gini')
+    .custom((value, )=>{
+        console.log(value);
+        
+        for(const key in value){
+            //VALUE --> {2023: 42.5}
+            //KEY --> 2023
+            //VALUE[KEY] --> 42.5
+
+            if( value[key] < 0 || value[key] > 100){
+                throw new Error('EL VALOR INGRESADO PARA GINI DEBE ESTAR COMPRENDIDO ENTRE 0 Y 100')
+            }
+        }
+        return true;
+    });

@@ -1,6 +1,7 @@
 import express from 'express';
 import {
     proccessAndSaveCountries,
+    viewAddController,
     getAllController,
     addCountryController,
     updateCountryController,
@@ -22,6 +23,8 @@ import {
 const router = express.Router();
 
 router.get('/process-countries', proccessAndSaveCountries);
+router.get('/addCountry', viewAddController);
+
 router.get('/countries', getAllController);
 router.post('/country', 
     [

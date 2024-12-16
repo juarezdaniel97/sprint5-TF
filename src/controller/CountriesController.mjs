@@ -35,6 +35,10 @@ export const proccessAndSaveCountries = async (req, res) => {
     }
 }
 
+export const viewAddController = async (req, res) => {
+    res.render('addCountry', {title: 'Agregar Pais'});
+}
+
 export const getAllController = async (req, res) => {
     try {
         //const datos = await getAllService();

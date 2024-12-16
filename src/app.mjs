@@ -12,32 +12,31 @@ config({ path: '../.env' })
 
 //console.log(process.env.NOMBRE); // salida: daniel juarez
 
-//Configurar BD
-connectionDB();
-
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 //MIDDLEWARE
 app.use(express.json());
-
 app.set('view engine', 'ejs');
 app.set('views', './view');
 
+//Configuración Express-ejs-layout
+app.use(expressEjsLayouts);
+
+//Configurar BD
+connectionDB();
 
 //Para archivos estáticos
 app.use(express.static('public'));
 
 
-//Configuración Express-ejs-layout
-app.use(expressEjsLayouts);
 
 
 app.use('/', homeRouter);
 app.use('/api', countriesRouter);
 app.use((req, res, next) => {
-    res.status(404).render('404');
+    res.status(404).render('404',{ title: '404 - Página no encontra' });
 });
 
 
