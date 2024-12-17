@@ -25,7 +25,7 @@ const countriesSchema = new mongoose.Schema({
         }
     },
     capital: [{ type: String }],
-    region: { type: String, required: true },
+    region: { type: String },
     subregion: { type: String },
     languages: {
         grn: { type: String },
