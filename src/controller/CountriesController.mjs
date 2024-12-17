@@ -32,6 +32,7 @@ export const proccessAndSaveCountries = async (req, res) => {
     } catch (error) {
         console.error("Error al procesar los paises: ", error.message);
         res.status(500).json({ error: "Hubo un problema al procesar los datos." })
+        //res.status(500).render('errors/500',{ title: '500 - Error del Servidor', message: "HUBO UN ERROR AL PROCESAR LOS DATOS" });
     }
 }
 
