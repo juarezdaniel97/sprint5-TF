@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
 
-    //FUNCIÓN QUE REALIZA UNA PETECIÓN FETCH PARA AGREGAR UN PAÍS
+//FUNCIÓN QUE REALIZA UNA PETECIÓN FETCH PARA AGREGAR UN PAÍS
     const addCountry = async (data) => {
 
     try {

@@ -7,10 +7,13 @@
         <!-- Campos -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
+            <!-- ID -->
+            <input type="hidden" value="<%= country._id %>" id="id">
+            
             <!-- Nombre Común -->
             <div>
                 <label for="common-name" class="block text-sm font-medium text-gray-700">Nombre Común</label>
-                <input type="text" id="name_common" value="<%= country.name.common %>"
+                <input type="text" id="common-name" value="<%= country.name.common %>"
                     class="mt-1 block w-full rounded shadow-lg">
             </div>
 
@@ -18,7 +21,7 @@
             <div>
                 <label for="official-name" class="block text-sm font-medium text-gray-700">Nombre
                     Oficial</label>
-                <input type="text" id="official_name" value="<%= country.name.official %>"
+                <input type="text" id="official-name" value="<%= country.name.official %>"
                     class="mt-1 block w-full rounded shadow-lg">
             </div>
 
@@ -131,9 +134,9 @@
         <!-- Botones -->
         <div class="mt-6 flex justify-end">
             <button type="reset"
-                class="bg-yellow-300 text-yellow-800 px-4 py-2 rounded hover:bg-yellow-400 mr-2">Cancelar</button>
-            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Guardar
-                Cambios</button>
+                class="bg-yellow-300 text-yellow-800 px-4 py-2 rounded hover:bg-yellow-400 mr-2">Limpiar</button>
+            <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Agregar
+                País</button>
         </div>
     </form>
 </section>
