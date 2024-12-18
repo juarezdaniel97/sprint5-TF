@@ -5,6 +5,8 @@ import { connectionDB } from './config/dbConfig.mjs';
 import countriesRouter from "./routes/CountriesRoutes.mjs";
 import homeRouter from './routes/HomeRoutes.mjs';
 import expressEjsLayouts from "express-ejs-layouts";
+import methodOverride from 'method-override';
+
 
 //Cargar las variables de entorno.
 //config();
@@ -31,8 +33,7 @@ connectionDB();
 //Para archivos estáticos
 app.use(express.static('public'));
 
-
-
+app.use(methodOverride('_method')); // Sobrescribe métodos con ?_method=DELETE
 
 app.use('/', homeRouter);
 app.use('/api', countriesRouter);
