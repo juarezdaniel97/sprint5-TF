@@ -1,10 +1,47 @@
-<h2>Modificar País</h2>
-<form action="/api/country/<%= country._id %>?_method=PUT" method="POST">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" value="<%= country.name.official %>" required>
 
-    <label for="capital">Capital:</label>
-    <input type="text" id="capital" name="capital" value="<%= country.capital %>" required>
 
-    <button type="submit">Guardar Cambios</button>
-</form>
+
+<section>
+    <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">MODIFICAR PAÍS</h2>
+    <form class="bg-white shadow-lg rounded-lg p-6" id="formAgregar" method="POST" action="/api/country/<%= country._id %>">
+        <!-- Nombre Común -->
+        <div>
+            <label for="name_common" class="block text-sm font-medium text-gray-700">Nombre Común</label>
+            <input type="text" name="name_common" id="name_common" value="<%= country.name.common %>"
+                class="mt-1 block w-full rounded shadow-lg">
+        </div>
+    
+        <!-- Nombre Oficial -->
+        <div>
+            <label for="official_name" class="block text-sm font-medium text-gray-700">Nombre Oficial</label>
+            <input type="text" name="official_name" id="official_name" value="<%= country.name.official %>"
+                class="mt-1 block w-full rounded shadow-lg">
+        </div>
+    
+        <!-- Fronteras (JSON) -->
+        <div>
+            <label for="borders" class="block text-sm font-medium text-gray-700">Fronteras (JSON)</label>
+            <textarea name="borders" id="borders" class="mt-1 block w-full rounded shadow-lg"><%= JSON.stringify(country.borders) %></textarea>
+        </div>
+    
+        <!-- Población -->
+        <div>
+            <label for="population" class="block text-sm font-medium text-gray-700">Población</label>
+            <input type="number" name="population" id="population" value="<%= country.population %>"
+                class="mt-1 block w-full rounded shadow-lg">
+        </div>
+    
+        <!-- Índice Gini (JSON) -->
+        <div>
+            <label for="gini" class="block text-sm font-medium text-gray-700">Índice Gini (JSON)</label>
+            <textarea name="gini" id="gini" class="mt-1 block w-full rounded shadow-lg"><%= JSON.stringify(country.gini) %></textarea>
+        </div>
+    
+        <!-- Botones -->
+        <div class="mt-6 flex justify-end">
+            <button type="reset"
+                class="bg-yellow-300 text-yellow-800 px-4 py-2 rounded hover:bg-yellow-400 mr-2">Cancelar</button>
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Guardar Cambios</button>
+        </div>
+    </form>
+</section>

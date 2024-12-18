@@ -4,10 +4,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     formAgregar.addEventListener('submit', async (event) => {
         event.preventDefault();
-
+        
         //CAPTURAMOS LOS DATOS DEL FORMULARIO
         const data = getDataForms();
-
+        
         //OBTENEMOS EL OBJETO CON LOS DATOS COMPLETOS 
         const countryData = Country(data);
         

@@ -1,7 +1,8 @@
 <section>
     <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">MODIFICAR PAÍS</h2>
-    <form action="/api/country/<%= country._id %>?_method=PUT" method="post" class="bg-white shadow-lg rounded-lg p-6"
-        id="formAgregar">
+
+
+    <form class="bg-white shadow-lg rounded-lg p-6" id="formAgregar">
 
         <!-- Campos -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -9,7 +10,7 @@
             <!-- Nombre Común -->
             <div>
                 <label for="common-name" class="block text-sm font-medium text-gray-700">Nombre Común</label>
-                <input type="text" name="name_common" value="<%= country.name.common %>"
+                <input type="text" id="name_common" value="<%= country.name.common %>"
                     class="mt-1 block w-full rounded shadow-lg">
             </div>
 
@@ -17,49 +18,49 @@
             <div>
                 <label for="official-name" class="block text-sm font-medium text-gray-700">Nombre
                     Oficial</label>
-                <input type="text" name="official_name" value="<%= country.name.official %>"
+                <input type="text" id="official_name" value="<%= country.name.official %>"
                     class="mt-1 block w-full rounded shadow-lg">
             </div>
 
             <!-- Capital -->
             <div>
                 <label for="capital" class="block text-sm font-medium text-gray-700">Capital</label>
-                <input type="text" name="capital" value="<%= country.capital %>"
+                <input type="text" id="capital" value="<%= country.capital %>"
                     class="mt-1 block w-full rounded shadow-lg">
             </div>
 
             <!-- Región -->
             <div>
                 <label for="region" class="block text-sm font-medium text-gray-700">Región</label>
-                <input type="text" name="region" value="<%= country.region %>"
+                <input type="text" id="region" value="<%= country.region %>"
                     class="mt-1 block w-full rounded shadow-lg">
             </div>
 
             <!-- Subregión -->
             <div>
                 <label for="subregion" class="block text-sm font-medium text-gray-700">Subregión</label>
-                <input type="text" name="subregion" value="<%= country.subregion %>"
+                <input type="text" id="subregion" value="<%= country.subregion %>"
                     class="mt-1 block w-full rounded shadow-lg">
             </div>
 
             <!-- Froteras -->
             <div>
                 <label for="borders" class="block text-sm font-medium text-gray-700">Fronteras</label>
-                <input type="text" name="borders" value="<%= country.borders %>"
+                <input type="text" id="borders" value="<%= country.borders %>"
                     class="mt-1 block w-full rounded shadow-lg">
             </div>
 
             <!-- Población -->
             <div>
                 <label for="population" class="block text-sm font-medium text-gray-700">Población</label>
-                <input type="number" name="population" value="<%= country.population %>"
+                <input type="number" id="population" value="<%= country.population %>"
                     class="mt-1 block w-full rounded shadow-lg">
             </div>
 
             <!-- Área -->
             <div>
                 <label for="area" class="block text-sm font-medium text-gray-700">Área (km²)</label>
-                <input type="number" name="area" value="<%= country.area %>"
+                <input type="number" id="area" value="<%= country.area %>"
                     class="mt-1 block w-full rounded shadow-lg">
             </div>
 
@@ -75,7 +76,7 @@
             <!-- Zona horaria -->
             <div>
                 <label for="timezones" class="block text-sm font-medium text-gray-700">Zona Horaria</label>
-                <input type="text" name="timezones" value="<%= country.timezones %>"
+                <input type="text" id="timezones" value="<%= country.timezones %>"
                     class="mt-1 block w-full rounded shadow-lg">
             </div>
 
@@ -121,7 +122,7 @@
             <!-- Creador -->
             <div>
                 <label for="creador" class="block text-sm font-medium text-gray-700">Creador</label>
-                <input type="text" name="creador" value="<%= country.creador %>"
+                <input type="text" id="creador" value="<%= country.creador %>"
                     class="mt-1 block w-full rounded shadow-lg">
             </div>
 
@@ -137,5 +138,5 @@
     </form>
 </section>
 
-<!-- <script src="/js/add.js"></script> -->
+<script src="/js/edit.js"></script>
 <script src="/js/addGini.js"></script>
