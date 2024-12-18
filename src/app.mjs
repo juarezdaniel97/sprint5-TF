@@ -23,6 +23,7 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', './view');
 
+
 //Configuración Express-ejs-layout
 app.use(expressEjsLayouts);
 

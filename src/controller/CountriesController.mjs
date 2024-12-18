@@ -55,8 +55,8 @@ export const getCountryByIdController = async (req, res) => {
         //Convierte el Objeto MAP en Objeto plano
         country.gini = Object.fromEntries(country.gini);
 
-        //res.render('editCountry', {title: 'Modificar País', country});
-        res.render('modificar', {title: 'Modificar País', country});
+        res.render('editCountry', {title: 'Modificar País', country});
+        //res.render('modificar', {title: 'Modificar País', country});
         
     }else{
         res.send('No encontrado')
@@ -111,6 +111,8 @@ export const updateCountryController = async (req, res) => {
         res.status(500).json({ message: 'Error al actualizar el país', error: error.message });
     }
 }
+
+
 
 export const deleteCountryController = async (req, res) => {
     try {
