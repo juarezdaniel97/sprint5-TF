@@ -60,42 +60,19 @@
                                 </td>
                                 <td class="border py-2 text-center">
                                     <div class="flex justify-center items-center space-x-2">
-                                        <button
-                                            class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 edit-button">Editar</button>
-                                        <button
-                                            class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 delete-button">Eliminar</button>
+                                        <a href="/api/country/<%= element._id %>" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 edit-button">Editar</a>
+                                        <!-- <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 edit-button">Editar</button> -->
+                                        
+                                        <form action="/api/country/<%= element._id %>?_method=DELETE" method="post">
+                                            <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 delete-button">Eliminar</button>
+                                        </form>
+                                            <!-- <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 delete-button">Eliminar</button> -->
                                     </div>
                                 </td>
                             </tr>
 
                             <% }) %>
-                                <!-- MUESTRA LA ÚLTIMA FILA
-                                    <tr>
-                                        <td colspan="2" class="border px-4 py-2">
-                                            DATOS DE POBLACIÓN
-                                        </td>
-                                        <td colspan="2" class="border px-4 py-2">
-                                            DATOS ÁREA
-                                        </td>
-                                    </tr> 
-                                -->
-                                <!--  EJEMPLO DE FILAS RENDERIZADAS                       
-                                    <tr class="country-row cursor-pointer hover:bg-gray-100"
-                            data-details='{"nombre": "Argentina", "capital": "Buenos Aires", "area": "2,780,400 km²", "poblacion": "45,380,000", "fronteras": ["Chile", "Brasil", "Uruguay"], "indiceGini": 42.9, "zonaHoraria": "UTC-3", "creador": "Admin"}'>
-                            <td class="border px-4 py-2">Argentina</td>
-                            <td class="border px-4 py-2">Buenos Aires</td>
-                            <td class="border px-4 py-2">2,780,400 km²</td>
-                            <td class="border px-4 py-2">45,380,000</td>
-                            <td class="border py-2 text-center">
-                                <div class="flex justify-center items-center space-x-2">
-                                    <button
-                                        class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 edit-button">Editar</button>
-                                    <button
-                                        class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 delete-button">Eliminar</button>
-                                </div>
-                            </td>
-                                    </tr> 
-                                -->
+                                
                                 <% } else { %>
                                     <tr class="border px-4 py-2">
                                         <td colspan="5" class=" font-semibold px-4 py-4 whitespace-nowrap text-center">

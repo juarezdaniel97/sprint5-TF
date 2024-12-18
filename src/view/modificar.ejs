@@ -1,0 +1,10 @@
+<h2>Modificar País</h2>
+<form action="/api/country/<%= country._id %>?_method=PUT" method="POST">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" value="<%= country.name.official %>" required>
+
+    <label for="capital">Capital:</label>
+    <input type="text" id="capital" name="capital" value="<%= country.capital %>" required>
+
+    <button type="submit">Guardar Cambios</button>
+</form>

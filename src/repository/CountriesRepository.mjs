@@ -22,6 +22,10 @@ class CountriesRepository extends IRepository {
         }
     }
 
+    async getFindById(id){
+        return Countries.findById(id);
+    }
+
     async create(datos) {
         try {
             const countries = new Countries(datos);

@@ -5,6 +5,7 @@ import { connectionDB } from './config/dbConfig.mjs';
 import countriesRouter from "./routes/CountriesRoutes.mjs";
 import homeRouter from './routes/HomeRoutes.mjs';
 import expressEjsLayouts from "express-ejs-layouts";
+import methodOverride from 'method-override';
 
 //Cargar las variables de entorno.
 //config();
@@ -24,6 +25,9 @@ app.set('views', './view');
 //Configuración Express-ejs-layout
 app.use(expressEjsLayouts);
 
+//Configuración para sobreescribir métodos
+app.use(methodOverride('_method')); // Sobrescribe métodos con ?_method=DELETE
+
 //Configurar BD
 connectionDB();
 
@@ -37,7 +41,6 @@ app.use('/', homeRouter);
 app.use('/api', countriesRouter);
 app.use((req, res, next) => {
     res.status(404).render('errors/404',{ title: '404 - Página no encontra' });
-    //res.status(200).render('confirms/confirm',{ title: 'Página de Confirmación' });
 });
 
 

@@ -1,6 +1,7 @@
 import {
     fetchAllCountries,
     getAllService,
+    getCountryByIdService,
     createCountriesService,
     updateCountryService,
     deleteCountryService,
@@ -18,7 +19,7 @@ import { calculosCounties } from '../public/js/calculosEstadisticos.mjs'
 export const proccessAndSaveCountries = async (req, res) => {
     try {
         const countries = await fetchAllCountries();
-        const countries_filter =  filterCountriesAPI(countries);
+        const countries_filter = filterCountriesAPI(countries);
 
         //Guardar en la BD
         await saveCountries_API_BD_service(countries_filter);
@@ -37,23 +38,48 @@ export const proccessAndSaveCountries = async (req, res) => {
 }
 
 export const viewAddController = async (req, res) => {
-    res.render('addCountry', {title: 'Agregar Pais'});
+    res.render('addCountry', { title: 'Agregar Pais' });
+}
+
+export const getCountryByIdController = async (req, res) => {
+    
+    const {id} = req.params;
+
+    const countryFound = await getCountryByIdService(id);
+    
+    if (countryFound) {
+        
+        //res.status(200).json({message: 'Encontrado', data: country});
+        const country = {...countryFound.toObject()}
+
+        //Convierte el Objeto MAP en Objeto plano
+        country.gini = Object.fromEntries(country.gini);
+
+        res.render('editCountry', {title: 'Modificar País', country});
+        
+    }else{
+        res.send('No encontrado')
+    }
 }
 
 export const getAllController = async (req, res) => {
     try {
-        
+
         const data = await getAllService();
-        
+
         const statistics = calculosCounties(data);
-        
+
         const countries = data.map(country => ({
             ...country.toObject(),
-            gini: country.gini ? Object.fromEntries(country.gini) : null
+            gini: country.gini ? Object.fromEntries(country.gini) : null 
         }));
 
+        //El método Object.fromEntries --> convierte el Map en un objeto plano
+        //console.log(country.gini); // { '2024': 40.9, '2023': 10.5 }
+
         res.render('dashboard', {title: "Gestión de Paises", countries, statistics});
-        
+        //res.render('index', { title: "Gestión de Paises", countries, statistics });
+
     } catch (error) {
         res.status(500).send('Error al obtener todos los datos')
     }
@@ -90,14 +116,15 @@ export const deleteCountryController = async (req, res) => {
         const country = await deleteCountryService(id);
 
         if (country) {
-            res.send('¡País eliminado correctamente!');
+            //res.send('¡País eliminado correctamente!');
+            res.status(200).render('confirms/confirm', { title: 'Página de Confirmación', message: "¡EL PAÍS SE ELIMINÓ CORRECTAMENTE!" });
         } else {
             res.status(400).json({ message: 'País no encontrado.' })
         }
     } catch (error) {
         res.status(400).json({ message: 'Error al eliminar el país.', error: error.message });
     }
-} 
+}
 
 export const deleteAllCountriesController = async (req, res) => {
     try {

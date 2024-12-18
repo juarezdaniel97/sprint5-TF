@@ -45,7 +45,7 @@ export const validatePopulationCountry = body('population')
 //VALIDATION FOR THE GINI FIELD
 export const validateGiniCountry = body('gini')
     .custom((value, )=>{
-        console.log(value);
+        //console.log(value);
         
         for(const key in value){
             //VALUE --> {2023: 42.5}
