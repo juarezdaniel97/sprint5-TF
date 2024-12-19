@@ -1,7 +1,6 @@
 <section>
     <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">MODIFICAR PAÍS</h2>
-    <form action="/api/pais/<%= country._id %>?_method=PUT" method="post" id="formEdit"
-        class="bg-white shadow-lg rounded-lg p-6">
+    <form id="formEdit" class="bg-white shadow-lg rounded-lg p-6">
 
         <!-- Campos -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -123,7 +122,7 @@
         <div class="mt-6 flex justify-end">
             <button type="reset"
                 class="bg-yellow-300 text-yellow-800 px-4 py-2 rounded hover:bg-yellow-400 mr-2">Cancelar</button>
-            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Guardar
+            <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Guardar
                 Cambios</button>
         </div>
     </form>

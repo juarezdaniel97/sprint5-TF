@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             if (response.ok) {
 
-                alert('¡País agregado correctamente!');
+                alert('¡País Modificado correctamente!');
                 window.location.reload();
 
             } else {
@@ -169,4 +169,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
             alert(`Error al enviar el formulario. ${error} `);
         }
     }
+
 });
