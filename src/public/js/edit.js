@@ -144,8 +144,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             if (response.ok) {
 
-                alert('¡País Modificado correctamente!');
-                window.location.reload();
+                //alert('¡País Modificado correctamente!');
+                //window.location.reload();
+                Swal.fire({
+                    title: "¡País modificado correctamente!",
+                    icon: "success",
+                    draggable: true,
+                }).then(()=>{
+                    // Redirige al dashboard después de cerrar el alert
+                    window.location.href = "/";
+                    // window.location.reload();
+                });
 
             } else {
                 const errorData = await response.json();

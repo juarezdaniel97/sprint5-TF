@@ -142,11 +142,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
 
         if (response.ok) {
-            console.log(response);
-            
-            alert('¡País agregado correctamente!');
-            window.location.reload();
-
+            //alert('¡País agregado correctamente!');
+            Swal.fire({
+                title: "¡País agregado correctamente!",
+                icon: "success",
+                draggable: true,
+            }).then(()=>{
+                // Redirige al dashboard después de cerrar el alert
+                window.location.href = "/";
+                // window.location.reload();
+            });
         } else {
             const errorData = await response.json();
             const { errores } = errorData
