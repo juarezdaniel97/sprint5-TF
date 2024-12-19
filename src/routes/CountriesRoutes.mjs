@@ -7,7 +7,8 @@ import {
     getCountryByIdController,
     updateCountryController,
     deleteCountryController,
-    deleteAllCountriesController
+    deleteAllCountriesController,
+    viewConfirmController
 } from '../controller/CountriesController.mjs';
 
 import { validationErrorHandler } from '../middleware/errorHandler.mjs';
@@ -63,5 +64,7 @@ router.put('/country/:id',
 //RUTA PARA ELIMINAR UN PAÍS
 router.delete('/country/:id', deleteCountryController);
 
+//RUTA DE CONFIMACIÓN 
+router.get('/countries-confirms', viewConfirmController)
 
 export default router;

@@ -6,7 +6,7 @@ import axios from 'axios';
 //URL_API_ALL
 export const fetchAllCountries = async () => {
     try {
-        let response = await fetch(process.env.URL_API_ALL);
+        let response = await fetch(process.env.URL_API_SPANISH);
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

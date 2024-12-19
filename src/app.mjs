@@ -39,7 +39,7 @@ app.use(methodOverride('_method')); // Sobrescribe métodos con ?_method=DELETE
 app.use('/', homeRouter);
 app.use('/api', countriesRouter);
 app.use((req, res, next) => {
-    res.status(404).render('errors/404',{ title: '404 - Página no encontra' });
+    res.status(404).render('errors/404',{ title: '404 - Página no encontrada', message: "LA PÁGINA QUE BUSCA NO EXISTE O FUE MOVIDA."});
 });
 
 

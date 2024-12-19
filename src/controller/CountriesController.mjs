@@ -24,11 +24,12 @@ export const proccessAndSaveCountries = async (req, res) => {
         //Guardar en la BD
         await saveCountries_API_BD_service(countries_filter);
 
-        res.status(200).json({
+        /*res.status(200).json({
             message: "Paises procesados y almacenados exitosamente",
             count_total: countries.length,
             count_filter: countries_filter.length,
-        });
+        });*/
+        res.status(200).render('confirms/success', {title: 'Página de éxito' , message: `SE OBTUVIERON ${countries.length} PAISES. SE PROCESARON Y ALMACENARON ${countries_filter.length}` });
 
     } catch (error) {
         console.error("Error al procesar los paises: ", error.message);
@@ -39,6 +40,10 @@ export const proccessAndSaveCountries = async (req, res) => {
 
 export const viewAddController = async (req, res) => {
     res.render('addCountry', { title: 'Agregar Pais' });
+}
+
+export const viewConfirmController = async (req, res) => {
+    res.render('confirms/confirm', {title: 'Página de Confirmación'})
 }
 
 export const getCountryByIdController = async (req, res) => {
@@ -112,8 +117,6 @@ export const updateCountryController = async (req, res) => {
     }
 }
 
-
-
 export const deleteCountryController = async (req, res) => {
     try {
         const { id } = req.params;
@@ -121,7 +124,7 @@ export const deleteCountryController = async (req, res) => {
 
         if (country) {
             //res.send('¡País eliminado correctamente!');
-            res.status(200).render('confirms/confirm', { title: 'Página de Confirmación', message: "¡EL PAÍS SE ELIMINÓ CORRECTAMENTE!" });
+            res.status(200).render('confirms/success', { title: 'Página de éxito', message: "¡EL PAÍS SE ELIMINÓ CORRECTAMENTE!" });
         } else {
             res.status(400).json({ message: 'País no encontrado.' })
         }
@@ -136,7 +139,8 @@ export const deleteAllCountriesController = async (req, res) => {
         console.log(countries);
 
         if (countries) {
-            res.send('Paises eliminados correctamente!');
+            //res.send('Paises eliminados correctamente!');
+            res.redirect('/');
         }
 
     } catch (error) {
