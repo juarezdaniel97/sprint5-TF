@@ -142,7 +142,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
 
         if (response.ok) {
-
+            console.log(response);
+            
             alert('¡País agregado correctamente!');
             window.location.reload();
 

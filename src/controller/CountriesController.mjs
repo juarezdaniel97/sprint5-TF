@@ -96,7 +96,7 @@ export const addCountryController = async (req, res) => {
         const data = req.body;
         const newCountries = await createCountriesService(data);
         res.status(201).json({ message: 'País agregado exitosamente', data: newCountries });
-
+        
     } catch (error) {
         res.status(500).json({ message: 'Error al agregar el país', error: error.message });
     }
