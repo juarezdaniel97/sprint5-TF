@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         //CAPTURAMOS LOS DATOS DEL FORMULARIO
         const data = getDataForms();
         
+        
         //OBTENEMOS EL OBJETO CON LOS DATOS COMPLETOS 
         const countryData = Country(data);
         
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         //OBTENEMOS LAS CAPITALES DEL PAÍS
         const capitalReceived = document.getElementById('capital').value;
-        const capital = capitalReceived.split(',').map(cap => cap.trim()); //Convertimo en un array separando por coma
+        const capital = capitalReceived.split(',').map(cap => cap.trim()); //Convertimos en un array separando por comas
 
         //OBTENEMOS LA REGIÓN DEL PAÍS
         const region = document.getElementById('region').value;

@@ -54,17 +54,15 @@ export const getCountryByIdController = async (req, res) => {
     
     if (countryFound) {
         
-        //res.status(200).json({message: 'Encontrado', data: country});
         const country = {...countryFound.toObject()}
 
         //Convierte el Objeto MAP en Objeto plano
         country.gini = Object.fromEntries(country.gini);
 
         res.render('editCountry', {title: 'Modificar País', country});
-        //res.render('modificar', {title: 'Modificar País', country});
-        
+
     }else{
-        res.send('No encontrado')
+        res.status(500).render('errors/500',{ title: '500 - Error del Servidor', message: "¡EL PAÍS INGRESADO NO SE HA PODIDO ENCONTRAR!" });
     }
 }
 
@@ -84,10 +82,10 @@ export const getAllController = async (req, res) => {
         //console.log(country.gini); // { '2024': 40.9, '2023': 10.5 }
 
         res.render('dashboard', {title: "Gestión de Paises", countries, statistics});
-        //res.render('index', { title: "Gestión de Paises", countries, statistics });
 
     } catch (error) {
-        res.status(500).send('Error al obtener todos los datos')
+        console.error(`Error al obtener todos los paises ${error}`);
+        res.status(500).render('errors/500',{ title: '500 - Error del Servidor', message: "¡ERROR AL OBTENER TODOS LOS PAISES!" });
     }
 }
 
@@ -98,7 +96,8 @@ export const addCountryController = async (req, res) => {
         res.status(201).json({ message: 'País agregado exitosamente', data: newCountries });
         
     } catch (error) {
-        res.status(500).json({ message: 'Error al agregar el país', error: error.message });
+        console.error(`Error al agregar el país ${error.message }`);
+        res.status(500).render('errors/500',{ title: '500 - Error del Servidor', message: "¡ERROR AL AGREGAR EL PAÍS!" });
     }
 }
 
@@ -110,10 +109,10 @@ export const updateCountryController = async (req, res) => {
         const updateCountry = await updateCountryService(id, data);
 
         res.status(200).json({ message: 'País actualizado exitosamente', data: updateCountry });
-        //res.status(200).json({ message: 'País actualizado exitosamente', data });
 
     } catch (error) {
-        res.status(500).json({ message: 'Error al actualizar el país', error: error.message });
+        console.error(`Error al actualizar el país ${error.message }`);
+        res.status(500).render('errors/500',{ title: '500 - Error del Servidor', message: "¡ERROR AL ACTUALIZAR EL PAÍS!" });
     }
 }
 
@@ -123,27 +122,26 @@ export const deleteCountryController = async (req, res) => {
         const country = await deleteCountryService(id);
 
         if (country) {
-            //res.send('¡País eliminado correctamente!');
             res.status(200).render('confirms/success', { title: 'Página de éxito', message: "¡EL PAÍS SE ELIMINÓ CORRECTAMENTE!" });
         } else {
-            res.status(400).json({ message: 'País no encontrado.' })
+            res.status(400).render('errors/500',{ title: '500 - Error del Servidor', message: "¡EL PAÍS INGRESADO NO SE HA PODIDO ENCONTRAR!" });
         }
     } catch (error) {
-        res.status(400).json({ message: 'Error al eliminar el país.', error: error.message });
+        consele.error(`Error al eliminar el país: ${error.message}`)
+        res.status(500).render('errors/500',{ title: '500 - Error del Servidor', message: "¡ERROR AL ELIMINAR UN PAÍS!" });
     }
 }
 
 export const deleteAllCountriesController = async (req, res) => {
     try {
         const countries = await deleteAllCountriesService();
-        console.log(countries);
-
+        
         if (countries) {
-            //res.send('Paises eliminados correctamente!');
             res.redirect('/');
         }
 
     } catch (error) {
-        res.status(400).json({ message: 'Error al eliminar todos los paises.', error: error.message })
+        consele.error(`Error al eliminar todos los paises: ${error.message}`)
+        res.status(500).render('errors/500',{ title: '500 - Error del Servidor', message: "¡ERROR AL ELIMINAR TODOS LOS PAISES!" });
     }
 }
