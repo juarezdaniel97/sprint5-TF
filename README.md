@@ -10,7 +10,7 @@ El desarrollo se basa en el patrón **MVC** (Modelo-Vista-Controlador) para gara
 
 ## ** Tecnologías Utilizadas **
 
-### ** Backen d**
+### ** Backend**
 - **Node.js**: Entorno de ejecución para construir la lógica del servidor.
 - **Express**: Framework para gestionar rutas y controladores de manera eficiente.
 - **MongoDB**: Base de datos NoSQL para almacenar la información procesada.
@@ -36,11 +36,13 @@ Clona el repositorio y entra en el directorio del proyecto:
 - [repositorio](https://github.com/juarezdaniel97/sprint5-TF)
 ### **2. Configurar el enterno**
 - Puerto
-- Base de Datos,
+- Base de Datos
 - [API](https://restcountries.com/v3.1/all)
+- git ignore
 ### **3. Instalar Dependencias**
 - npm install <nombre-del-paquete>
 ### **2. Ejecutar el proyecto**
+- node app.msj
 
 
 
