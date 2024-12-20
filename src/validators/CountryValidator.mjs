@@ -10,7 +10,6 @@ export const validateNameCountry = body('name.official')
 // VALIDATION FOR THE CAPITAL FIELD
 export const validateCapitalCountry = body('capital')
     .notEmpty().withMessage('¡EL CAMPO CAPITAL NO PUEDE ESTAR VACÍO!')
-    .trim()
     .custom((capital)=>{
         for (const cap of capital) {
             if (cap.trim().length < 3 || cap.trim().length > 90) {
@@ -25,14 +24,14 @@ export const validateCapitalCountry = body('capital')
 export const validateBordersCountry = body('borders')
     .custom((borders) => {
         for (const border of borders) {
-            console.log(border);
+            //console.log(border);
             if (border.trim().length !== 3) {
-                console.log("entro al if --> !3");
+                //console.log("entro al if --> !3");
                 throw new Error('¡CADA FRONTERA DEBE TENER 3 CARACTERES!');
             }
             
             if (border.trim() !== border.trim().toUpperCase()) {
-                console.log("entro al if --> MAYUSCULA");
+                //console.log("entro al if --> MAYUSCULA");
                 throw new Error('¡CADA FRONTERA DEBE TENER TODOS SUS CARACTERES EN MAYÚSCULAS!');
             }
         }

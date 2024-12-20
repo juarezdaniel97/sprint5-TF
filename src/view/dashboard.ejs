@@ -36,12 +36,12 @@
                             <tr class="country-row cursor-pointer hover:bg-gray-100" data-details='<%= JSON.stringify({
                                 nombre: element.name.official,
                                 nombreComun: element.name.common,
-                                capital: element.capital[0],
+                                capital: element.capital,
                                 region: element.region,
                                 subregion: element.subregion,
                                 fronteras: element.borders || [],
                                 independiente: element.independent,
-                                zonaHoraria: element.timezones[0], 
+                                zonaHoraria: element.timezones, 
                                 indiceGini: element.gini ? Object.entries(element.gini).map(([year, value]) => ({ year, value })) : [], 
                                 creador: element.creador }) %>'>
 

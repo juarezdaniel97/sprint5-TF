@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
         // OBTENEMOS EL ID DEL PAIS A ACTUALIZAR
         const id = document.getElementById('id').value;
         console.log(id);
-        
+
         //CAPTURAMOS LOS DATOS DEL FORMULARIO
         const data = getDataForms();
 
         //OBTENEMOS EL OBJETO CON LOS DATOS COMPLETOS 
         const countryData = Country(data);
-        
+
         //REALIZAMOS LA PETICIÓN FETCH
         updateCountry(id, countryData);
     });
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         //OBTENEMOS LAS CAPITALES DEL PAÍS
         const capitalReceived = document.getElementById('capital').value;
-        const capital = capitalReceived.split(',').map(cap => cap.trim()); //Convertimo en un array separando por coma
+        const capital = capitalReceived.split(',').map(cap => cap); //Convertimo en un array separando por coma
 
         //OBTENEMOS LA REGIÓN DEL PAÍS
         const region = document.getElementById('region').value;
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         //OBTENEMOS LAS FRONTERAS DEL PAÍS
         const bordersReceived = document.getElementById('borders').value;
-        const borders = bordersReceived.split(',').map(border => border.trim());
+        const borders = bordersReceived.split(',').map(border => border);
 
         //OBTENEMOS LA POBLACIÓN DEL PAÍS
         const population = document.getElementById('population').value;
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         //OBTENEMOS LAS ZONAS HORARIAS DEL PAÍS
         const timezonesReceived = document.getElementById('timezones').value;
-        const timezones = timezonesReceived.split(',').map(time => time.trim());
+        const timezones = timezonesReceived.split(',').map(time => time);
 
         //LLAMAMOS A UNA FUNCIÓN QUE ME OBTIENE LOS VALORES DE ÍNIDICE GINI
         const indiceGini = getIndiceGini();
@@ -144,35 +144,36 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             if (response.ok) {
 
-                //alert('¡País Modificado correctamente!');
-                //window.location.reload();
                 Swal.fire({
                     title: "¡País modificado correctamente!",
                     icon: "success",
                     draggable: true,
-                }).then(()=>{
-                    // Redirige al dashboard después de cerrar el alert
+                }).then(() => {
                     window.location.href = "/";
-                    // window.location.reload();
                 });
 
             } else {
                 const errorData = await response.json();
                 const { errores } = errorData
 
-                if (errores.length === 1) {
-                    const { field, value, message, location } = errores[0];
+                errores.forEach(error => {
+                    console.log("HAY UN ERROR Y ENTRA POR EL VARIOS ");
 
-                    alert(`${message} \n Error en el campo: ${field} \n El valor ingresado es: ${value} `)
-                    console.log(location);
+                    const isEmptyValue = (value) => {
+                        if (Array.isArray(value)) {
+                            // Verifica si el array está vacío o solo contiene strings vacíos
+                            return value.length === 0 || value.every(item => item === '');
+                        }
+                        return !value; // Para valores no array
+                    };
 
-                } else {
-
-                    errores.forEach(error => {
-                        alert(`${error.message} \n Error en el campo: ${error.field} \n El valor ingresado es: ${error.value} `)
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: `${error.message}`,
+                        footer: `<p>El valor ingresado es: ${isEmptyValue(error.value) ? 'Vacío' : error.value}</p>`
                     });
-                }
-
+                });
             }
         } catch (error) {
             alert(`Error al enviar el formulario. ${error} `);

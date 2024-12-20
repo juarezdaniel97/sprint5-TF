@@ -30,12 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
         modalContent.innerHTML = `
             <p><strong>Nombre Común:</strong> ${country.nombreComun}</p>
             <p><strong>Nombre Oficial:</strong> ${country.nombre}</p>
-            <p><strong>Capital:</strong> ${country.capital || 'No tiene'}</p>
+            <p><strong>Capital:</strong> ${country.capital.join(',') || 'No tiene'}</p>
             <p><strong>Región:</strong> ${country.region || 'No tiene'}</p>
             <p><strong>Subregión:</strong> ${country.subregion || 'No tiene'} </p>
             <p><strong>Fronteras:</strong> ${country.fronteras.join(', ') || 'No tiene'}</p>
             <p><strong>Intependiente:</strong> ${country.independiente}</p>
-            <p><strong>Zona Horaria:</strong> ${country.zonaHoraria || 'No tiene'}</p>
+            <p><strong>Zona Horaria:</strong> ${country.zonaHoraria.join(',') || 'No tiene'}</p>
             <p><strong>Índice Gini:</strong> ${giniContent}</p>
             <p><strong>Creador:</strong> ${country.creador}</p>
         `;
