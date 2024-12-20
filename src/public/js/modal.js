@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
     const modal = document.getElementById('country-modal');
     const modalContent = document.getElementById('country-details');
     const closeModalButton = document.getElementById('close-modal');

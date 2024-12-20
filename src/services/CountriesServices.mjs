@@ -1,9 +1,6 @@
 import CountriesRepository from "../repository/CountriesRepository.mjs";
-import axios from 'axios';
 
 
-//URL_API_SPANISH
-//URL_API_ALL
 export const fetchAllCountries = async () => {
     try {
         let response = await fetch(process.env.URL_API_ALL);
