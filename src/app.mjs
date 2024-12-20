@@ -8,11 +8,8 @@ import expressEjsLayouts from "express-ejs-layouts";
 import methodOverride from 'method-override';
 
 
-//Cargar las variables de entorno.
-//config();
+//SE CARGA LAS VARIABLES DE ENTORNO.
 config({ path: '../.env' })
-
-//console.log(process.env.NOMBRE); // salida: daniel juarez
 
 
 const app = express();
@@ -28,12 +25,13 @@ app.set('views', './view');
 app.use(expressEjsLayouts);
 
 
-//Configurar BD
+//MÉTODO PARA lA BD
 connectionDB();
 
-//Para archivos estáticos
+//CONFIGURACIÓN PARA ARCHIVO ESTÁTICOS
 app.use(express.static('public'));
 
+//CONFIGUACIÓN PARA SOBREESCRIBIR MÉTODOS (delete)
 app.use(methodOverride('_method')); // Sobrescribe métodos con ?_method=DELETE
 
 app.use('/', homeRouter);

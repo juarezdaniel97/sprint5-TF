@@ -34,7 +34,7 @@ router.get('/countries', getAllController);
 router.delete('/countries', deleteAllCountriesController);
 
 //RUTA PARA MOSTRAR VISTA DE AGREGAR
-router.get('/addCountry', viewAddController);
+router.get('/add-country', viewAddController);
 
 //RUTA PARA AGREGAR UN NUEVO PAÍS
 router.post('/country', 
@@ -64,7 +64,7 @@ router.put('/country/:id',
 //RUTA PARA ELIMINAR UN PAÍS
 router.delete('/country/:id', deleteCountryController);
 
-//RUTA DE CONFIMACIÓN 
-router.get('/countries-confirms', viewConfirmController)
+//RUTA DE CONFIMACIÓN PARA ELIMINAR PAISES
+router.get('/delete-countries', viewConfirmController)
 
 export default router;
