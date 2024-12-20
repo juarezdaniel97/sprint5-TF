@@ -1,9 +1,9 @@
-<!-- Main Content -->
-<main class="container mx-auto mt-8 px-6">
+
+    <!-- Paises -->
     <section id="listado-paises">
         <div class="grid grid-cols-2 gap-4">
 
-            <!-- Listado de Países -->
+            <!-- Titulo -->
             <div>
                 <h3 class="text-2xl font-semibold mb-4">Listado de Países</h3>
             </div>
@@ -18,6 +18,7 @@
             </div>
         </div>
 
+        <!-- Tabla de Paises -->
         <div class="container table-container overflow-x-auto">
             <table class="table-auto w-full bg-white border border-gray-300 text-sm">
                 <thead>
@@ -31,7 +32,7 @@
                 </thead>
                 <tbody id="tabla-paises">
                     <!-- variable -> countries -->
-                    <% if (countries.length> 0) { %>
+                    <% if (countries.length > 0) { %>
                         <% countries.forEach(element=> { %>
                             <tr class="country-row cursor-pointer hover:bg-gray-100" data-details='<%= JSON.stringify({
                                 nombre: element.name.official,
@@ -143,7 +144,7 @@
                 <% } %>
         
     </section>
-</main>
+
 
 
 <script src="/js/filterName.js"></script>

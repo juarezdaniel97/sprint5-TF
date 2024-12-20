@@ -6,7 +6,7 @@ import Countries from "../models/Countries.mjs";
 class CountriesRepository extends IRepository {
 
     async getAll() {
-        //Puedo filtrar por el campo name, common, etc
+        //Puedo filtrar por el campo name, common, creador, etc
         //Me parece más práctico añadirle un campo de type y filtrar por tipo (Country o SuperHero)
         return await Countries.find({ type: "Country" });
     }

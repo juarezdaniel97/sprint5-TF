@@ -19,11 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function showDetails(country) {
 
         let giniContent = 'No disponible';
+
         if (country.indiceGini && country.indiceGini.length > 0) {
-            giniContent = '<ul>';
+            
+            giniContent = '<ul class="list-disc list-inside space-y-1 text-gray-600">';
+
             country.indiceGini.forEach(gini => {
-                giniContent += `<li>Año: ${gini.year} - Valor: ${gini.value}</li>`;
+                giniContent += `<li> Año: ${gini.year} - Valor: ${gini.value}</li>`;
             });
+
             giniContent += '</ul>';
         }
 

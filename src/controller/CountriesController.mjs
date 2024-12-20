@@ -24,16 +24,10 @@ export const proccessAndSaveCountries = async (req, res) => {
         //Guardar en la BD
         await saveCountries_API_BD_service(countries_filter);
 
-        /*res.status(200).json({
-            message: "Paises procesados y almacenados exitosamente",
-            count_total: countries.length,
-            count_filter: countries_filter.length,
-        });*/
-        res.status(200).render('confirms/success', {title: 'Página de éxito' , message: `SE OBTUVIERON ${countries.length} PAISES. SE PROCESARON Y ALMACENARON ${countries_filter.length}` });
+        res.status(200).render('confirms/success', {title: 'Página de éxito' , message: `SE OBTUVIERON UN TOTAL DE ${countries.length} PAISES, Y SE PROCESARON Y ALMACENARON ${countries_filter.length}` });
 
     } catch (error) {
         console.error("Error al procesar los paises: ", error.message);
-        //res.status(500).json({ error: "Hubo un problema al procesar los datos." })
         res.status(500).render('errors/500',{ title: '500 - Error del Servidor', message: "HUBO UN ERROR AL PROCESAR LOS DATOS DE LA API" });
     }
 }
@@ -78,7 +72,8 @@ export const getAllController = async (req, res) => {
             gini: country.gini ? Object.fromEntries(country.gini) : null 
         }));
 
-        //El método Object.fromEntries --> convierte el Map en un objeto plano
+        //toObject() convierte un documento de MongoDB a un objeto JavaScript plano
+        //Object.fromEntries() convierte el tipo Map en un objeto plano
         //console.log(country.gini); // { '2024': 40.9, '2023': 10.5 }
 
         res.render('dashboard', {title: "Gestión de Paises", countries, statistics});
