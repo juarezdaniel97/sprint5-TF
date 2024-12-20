@@ -92,14 +92,13 @@
                                 <div>
                                     <label for="gini-year-<%= index %>"
                                         class="block text-sm font-medium text-gray-700">Año</label>
-                                    <input type="number" name="gini[<%= year %>]" id="gini-year-<%= index %>"
-                                        value="<%= year %>" class="gini-year mt-1 block w-full rounded shadow-lg">
+                                    <input type="number" id="gini-year-<%= index %>" value="<%= year %>" 
+                                    class="gini-year mt-1 block w-full rounded shadow-lg">
                                 </div>
                                 <div>
                                     <label for="gini-value-<%= index %>"
                                         class="block text-sm font-medium text-gray-700">Valor</label>
-                                    <input type="number" step="0.1" name="gini_values[<%= year %>]"
-                                        id="gini-value-<%= index %>" value="<%= country.gini[year] %>"
+                                    <input type="number" step="0.1" id="gini-value-<%= index %>" value="<%= country.gini[year] %>"
                                         class="gini-value mt-1 block w-full rounded shadow-lg">
                                 </div>
 
